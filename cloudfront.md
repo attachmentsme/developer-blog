@@ -79,7 +79,7 @@ After all this hard work, how much faster were our page-load-times?
 
 ![After CloudFront](./images/cloudfront/after-cf.png)
 
-wow! page-load-times went from the original 8-seconds, down to approximately 500 milliseconds, a 1600% improvement.
+wow! page-load-times went from the original 8-seconds, down to approximately 500-milliseconds, a 1600% improvement.
 
 Pulling in CloudFront was definitely well worth the trouble, and we learned a valuable lesson about the benefits of CDNs. To improve the user experience of your website, I suggest pulling your assets in to a CDN such as CloudFront sooner rather than later -- other performance improvements are micro-optimizations comparatively.
 
