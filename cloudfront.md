@@ -29,8 +29,8 @@ To start using CloudFront, you create what is called a Distribution. A Distribut
 
 * Attachments.me has a CloudFront Distribution at the URL https://drvlo06w0956l.cloudfront.net, with the Orgin Domain Name of https://attachments.me
 * Let's suppose that a user requests the asset: https://drvlo06w0956l.cloudfront.net/images/marketing/logo.png
-* If logo.png is already cached in CloudFront, it will be served immediately.
-* If logo.png is not already cached in CloudFront, the asset will be loaded from the Origin Domain Name: https://attachments.me/images/marketing/logo.png
+* If _logo.png_ is already cached in CloudFront, it will be served immediately.
+* If _logo.png_ is not already cached in CloudFront, the asset will be loaded from the Origin Domain Name: https://attachments.me/images/marketing/logo.png
 
 So simple! CloudFront accepts a request for an asset at a given path, either servers the asset, or loads the asset from the corresponding path of the Origin Domain Name.
 
@@ -39,7 +39,11 @@ Moving Assets over to CloudFront
 
 Rather than immediately switching our entire site to using CloudFront, we decided to incrementally move a few key pages over. This allowed us meassure performance, experiment with cache settings, and to perform various other sanity checks before fully-committing to CloudFront. We created several [Rails View Helpers](https://github.com/attachmentsme/cloud_front_helpers) to aid us in this incremental approach.
 
+Once you're ready to move all of your assets over to CloudFront, if like us you're using Ruby on Rails. You can simply add this line to your _production.rb_ file:
 
+```ruby
+
+```
 
 Some Caveats
 ------------
