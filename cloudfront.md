@@ -1,9 +1,9 @@
-Serving Assets Through Amazon CloudFront, For Fun and Profit
+Fun and Profit, Through Amazon CloudFront
 =====================================
 
 _Can we speed up the load time of landing page to sub-2-seconds?_, this ticket had been kicking around in our backlog for quite some time. We'd consistently made attempts to deliver assets efficiently:
 
-* CSS and JavaScript assets were combined and minified.
+* CSS and JavaScript was combined and minified.
 * static assets were served directly through Nginx.
 * Nginx was configured to gzip the assets that it delivered.
 
@@ -37,7 +37,10 @@ So simple! CloudFront accepts a request for an asset at a given path, either ser
 Moving Assets over to CloudFront
 --------------------------------
 
-Rather than immediately switching our entire siet to using CloudFront, it seemed safer to incrementally move a few key pages over. To help us do so, we created several [view helpers](https://github.com/attachmentsme/cloud_front_helpers) for Rails. These helpers allowed us to selectively move CSS, JavaScript, and image assets over to CloudFront.
+Rather than immediately switching our entire site to using CloudFront, we decided to incrementally move a few key pages over. This allowed us meassure performance, experiment with cache settings, and to perform various other sanity checks, before fully-committing to CloudFront. We created several [Rails View Helpers](https://github.com/attach
+mentsme/cloud_front_helpers) to aid us in this incremental approach.
+
+
 
 Some Caveats
 ------------
