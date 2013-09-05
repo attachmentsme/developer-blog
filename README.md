@@ -5,5 +5,5 @@ This repo contains tutorials, musings, diatribes, and reflections, extracted fro
 
 Table of Contents
 -----------------
-[Fun and Profit, Through Amazon CloudFront](./cloudfront.md)
+1. [Fun and Profit, Through Amazon CloudFront](./cloudfront.md)
 
