@@ -37,8 +37,7 @@ So simple! CloudFront accepts a request for an asset at a given path, either ser
 Moving Assets over to CloudFront
 --------------------------------
 
-Rather than immediately switching our entire site to using CloudFront, we decided to incrementally move a few key pages over. This allowed us meassure performance, experiment with cache settings, and to perform various other sanity checks, before fully-committing to CloudFront. We created several [Rails View Helpers](https://github.com/attach
-mentsme/cloud_front_helpers) to aid us in this incremental approach.
+Rather than immediately switching our entire site to using CloudFront, we decided to incrementally move a few key pages over. This allowed us meassure performance, experiment with cache settings, and to perform various other sanity checks before fully-committing to CloudFront. We created several [Rails View Helpers](https://github.com/attachmentsme/cloud_front_helpers) to aid us in this incremental approach.
 
 
 
