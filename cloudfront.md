@@ -52,7 +52,7 @@ Some Caveats
 
 When setting up CloudFront, we ran into some issues with the way our Nginx.conf was configured to serve assets. After a bit of research we ended up modifying some of our settings:
 
-* we changed expires to max, indicating to CloudFront that it can hold on to a cached asset for a long period of time.
+* we changed _expires_ to _max_, indicating to CloudFront that it can hold on to a cached asset for a long period of time.
 * we set _gzip\_http\_version_ to _1.0_, and _gzip\_static_ to _on_. Without these flags, CloudFront does not serve zipped assets.
 * we set _Cache-Control_ to public, this indicates that the asset can be stored in a publicly available location.
 * we set _Last-Modified_ to _""_, as some browsers request an asset before it expires if this flag is set.
