@@ -13,7 +13,7 @@ Regardless of these efforts, our landing page's loading times were becoming abys
 
 As the graph above shows, our load-times were pushing 8-seconds!
 
-AWS provides a Content Distribution Network called CloudFront. I had wanted to try out CloudFront for quite some time, figuring that it would be a quick performance win; While I expected speed improvements, I was blown away by just how much faster load times ended up being.
+AWS provides a Content Distribution Network called CloudFront. I had wanted to try out CloudFront for quite some time, figuring that it would be a quick performance win; while I expected speed improvements, I was blown away by just how much faster load times ended up being.
 
 In this post I'll:
 
