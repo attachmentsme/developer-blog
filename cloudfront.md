@@ -42,13 +42,46 @@ Rather than immediately switching our entire site to using CloudFront, we decide
 Once you're ready to move all of your assets over to CloudFront, if like us you're using Ruby on Rails. You can simply add this line to your _production.rb_ file:
 
 ```ruby
-
+config.action_controller.asset_host = "drvlo06w0956l.cloudfront.net"
 ```
+
+At this point helpers such as, _image\_tag_, _stylesheet\_link\_tag_, etc, will take this base-url into account.
 
 Some Caveats
 ------------
 
+When setting up CloudFront, we ran into some issues with the way our Nginx.conf was configured to serve assets. After a bit of research we ended up modifying some of our settings:
+
+* we changed expires to max, indicating to CloudFront that it can hold on to a cached asset for a long period of time.
+* we set _gzip\_http\_version_ to _1.0_, and _gzip\_static_ to _on_. Without these flags, CloudFront does not serve zipped assets.
+* we set _Cache-Control_ to public, this indicates that the asset can be stored in a publically available location.
+* we set _Last-Modified_ to _""_, as some browsers request an asset before it expires if this flag is set.
+
+Here's what our Nginx settings ended up looking like:
+
+```nginx
+location ~ ^/assets/ {
+    allow all;
+    root /var/www/current/public;
+    expires max;
+    gzip_http_version 1.0;
+    gzip_static  on;
+    add_header   Last-Modified "";
+    add_header   Cache-Control public;
+    break;
+}
+```
+
 The Final Numbers
 -----------------
 
+After all this hard work, how much faster were our page-load-times?
 
+![After CloudFront](./images/cloudfront/after-cf.png)
+
+wowza! we went from the original 8-seconds down to approximately 500 miliseconds to pull in all of the landing-page's assets.
+
+Well worth the trouble, and a valuable lesson learned. To improve the user experience of your website, I suggest pulling your assets in to a CDN such as CloudFront sooner rather than later.
+
+-----------------
+_Benjamin Coe_ is the cofounder of [Attachments.me](https://attachments.me), he can often be found [tweeting](https://twitter.com/#/benjamincoe) and [coding](https://github.com/bcoe).
