@@ -29,15 +29,15 @@ Nagios
 
 Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnornamly; ensuring that my phone rings at 3:00AM in the morning, if there's a major ops-problem.
 
-Nagios ships with plugins for monitoring various services: _check\_http_, _check\_disk_, _check\_ssh_, etc. Where it really shines, is that it's so easy to extend with your own plugins. At Attachments.me, we've written plugins for:
+Nagios ships with plugins for monitoring various services: _check\_http_, _check\_disk_, _check\_ssh_, etc. Where it really shines, is that it's so easy to extend with your own plugins. We've written plugins for:
 
 * monitoring MongoDB's replication status.
 * monitoring the number of concurrent connections to PostgreSQL.
 * monitoring the number of messages in our Resque queues.
 * monitoring the number of messages in our SQS queues.
-* monitoring graphs in Graphite (more on this later.)
+* monitoring important metrics in Graphite (more on this later.)
 
-When you release a major bug into produciton, it's useful to have a retrospective looking at breakdowns in process that allowed for the mistake. Similarly, if we have an operational issue that Nagios fails to inform us about, we try to get a check in Nagios going forward.
+When you release a major bug into produciton, it's useful to have a retrospective. What breakdowns in process that allowed for the mistake? Similarly, if we have an operational issue that Nagios fails to notify us of, we attempt to get a check in Nagios going forward.
 
 Here's what we currently have Nagios monitoring:
 
