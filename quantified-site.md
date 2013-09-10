@@ -4,8 +4,8 @@ The Quantified Site
 The Attachments.me ecosystem has many dependencies:
 
 * Gmail's IMAP.
-* Cloud-storage providers: Dropbox, Box, SkyDrive, Google Drive, Egnyte.
-* Our own [ImageMagick-based thumbnailing service](https://github.com/bcoe/thumbd).
+* cloud-storage providers: Dropbox, Box, SkyDrive, Google Drive, Egnyte.
+* our own [ImageMagick-based thumbnailing service](https://github.com/bcoe/thumbd).
 * Crocodoc.
 
 Just to name a few...
@@ -17,9 +17,9 @@ A year ago, we realized we had problems. When queues started backing up, and Att
 
 or, was it something outside of our control?
 
-* was Google Drive was down?
+* was Google Drive down?
 * did a user have tens-of-thousands of spam-emails pouring into their email account, resulting in a DoS attack on our system?
 
-Regardless, the underlying problem was a lack of visibility. 
+The ultimate problem was a lack of visibility into our system. 
 
 This is a story about how we fixed this problem, using technologies such as: Nagios, Graphite, StatsD, and Sentry. In turn, getting to the point where we had confidence in our system, and could sleep at night.
