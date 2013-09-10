@@ -27,7 +27,7 @@ This is a story about how we used technologies, such as Nagios, Graphite, StatsD
 Nagios
 ------
 
-Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnornamly; ensuring that my phone rings at 3:00AM, if there's a major ops-problem.
+Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnornamly; ensuring that my phone rings at 3:00AM if there's a major ops-problem.
 
 Nagios ships with plugins for monitoring various services: _check\_http_, _check\_disk_, _check\_ssh_, etc. Where it really shines, is that it's so easy to extend with your own plugins. We've written plugins for:
 
@@ -42,6 +42,8 @@ When you release a major bug into produciton, it's useful to have a retrospectiv
 Here's what we currently have Nagios monitoring:
 
 ![Nagios at Attachments.me](./images/quantified-site/nagios.png)
+
+Nagios does a great job of notifying us when a major piece of infrastructe is exploding. It doesn't, however, help us isolate what might be causing the problem. Nor does it tell us when a peice of infrastructure is running, but running in an unexpected manner, e.g., when we've released a buggy version of the website. Sentry, and Graphite, are better suited for these tasks.
 
 Sentry
 ------
