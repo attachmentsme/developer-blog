@@ -50,5 +50,6 @@ Our Metrics Board
 Conclusion 
 ----------
 
+* these tools compliment each other.
 * a quantified site has made our lives far better.
 * I would get this infrastructure in place out-of-the-gate in the future.
