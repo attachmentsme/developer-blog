@@ -37,7 +37,7 @@ Nagios ships with plugins for monitoring various services: _check\_http_, _check
 * monitoring the number of messages in our SQS queues.
 * monitoring important metrics in Graphite (more on this later.)
 
-When you release a major bug into produciton, it's useful to have a retrospective. What breakdowns in process that allowed for the mistake? Similarly, if we have an operational issue that Nagios fails to notify us of, we attempt to get a check in Nagios going forward.
+When you release a major bug into produciton, it's useful to have a retrospective. What were the breakdowns in process that allowed for the mistake? Similarly, if we have an operational issue that Nagios fails to notify us of, we attempt to get a check in Nagios going forward.
 
 Here's what we currently have Nagios monitoring:
 
@@ -48,8 +48,17 @@ Nagios does a great job of notifying us when a major piece of infrastructe is ex
 Sentry
 ------
 
-* great way to isolate regressions, find bugs in the code we release.
-* canary in the coal-mine, are graphs significantly higher than they used to be.
+In production, our unhandled exceptions bubble up to [GetSentry](https://getsentry.com/welcome/), a hosted version of David Cramer's [Sentry](https://github.com/getsentry/sentry) library:
+
+* Sentry aggregates together similar exceptions.
+* notifies us of newly observed exceptions, as well as regressions.
+* and gives us aggregate analytics of exceptions over time.
+
+When releasing Attachments.me, we tend to have a tab open to Sentry's realtime incoming view. If we see a bunch of brand new exceptions flowing in, it's a good indicator that we've released a bug.
+
+Sentry's aggregate metrics can be a good canary-in-the-coal-mine for major issues. For instance, when a cloud storage service recently made a minor unannounced change to their API, it resulted in a huge spike in Sentry exceptions.
+
+![Nagios at Attachments.me](./images/quantified-site/sentry.png)
 
 Graphite/StatsD
 ---------------
