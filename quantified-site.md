@@ -22,5 +22,33 @@ or, was it something outside of our control?
 
 Our real underlying problem was a lack of visibility into the system. 
 
-This is a story about how we used technologies, such as Nagios, Graphite, StatsD, and Sentry, to gain visibility into our system. Giving us the data we needed to isolate problems, an in turn allowing us to sleep at night.
+This is a story about how we used technologies, such as Nagios, Graphite, StatsD, and Sentry, to gain visibility into our system. This visibility allowed us to rapidly isolate problems in our distributed architecture, reducing stress, and allowing us to iterate faster.
 
+Nagios
+------
+
+* tells us something's wrong, doesn't tell us why something is wrong.
+
+Sentry
+------
+
+* great way to isolate regressions, find bugs in the code we release.
+* canary in the coal-mine, are graphs significantly higher than they used to be.
+
+Graphite/StatsD
+---------------
+
+* detailed information about the system, isolate real problems.
+* intgegrated with Nagios (this has saved us more than once).
+
+Our Metrics Board
+-----------------
+
+* make sure people understand the metrics that are important to ops.
+* put them in a central place, let people know when problems are happening.
+
+Conclusion 
+----------
+
+* a quantified site has made our lives far better.
+* I would get this infrastructure in place out-of-the-gate in the future.
