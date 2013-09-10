@@ -6,4 +6,4 @@ This repo contains tutorials, musings, diatribes, and reflections, extracted fro
 Table of Contents
 -----------------
 1. [Fun and Profit, Through Amazon CloudFront](./cloudfront.md)
-
+2. [The Quantified Site](./quantified-site.md)
