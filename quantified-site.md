@@ -106,4 +106,4 @@ The visiblity we've gained through Nagios, Sentry, and StatsD/Graphite is incred
 * we can submit a fix for a bug, and watch a graph of failure rates drop in response.
 * we can break something in production, and with Sentry and Graphite detect the problem, and get it fixed, before a single customer notices.
 
-Getting the point we're at today was an organic process, perhaps an important learning experience for a development team to go through. Having said that, I know that I would get similar infrastructure in place much faster in the future.
+Getting the point we're at today was an organic process, and an important learning experience for a development team. Having said that, I highly endorse getting similar infrastructre in place -- it's really quite awesome.
