@@ -65,7 +65,7 @@ StatsD/Graphite
 
 StatsD is a daemon that aggregates together statistical-events emitted from your applications. It can, in turn, output this data to Graphite, a tool for visualizing and manipulating graphs.
 
-Attachments.me performs many of operations asynchronously: uploading files to the cloud, thumbnailing images and documents, indexing email. We've developed a convention where any jobs that we dispatch to a queue, are tracked with StatsD:
+Attachments.me performs many of operations asynchronously: uploading files to the cloud, thumbnailing images and documents, indexing email. All jobs that we dispatch to a queue are tracked with StatsD:
 
 * an event is emitted when the job is enqueued.
 * an event is emitted when the job is pulled off the queue for processing.
@@ -79,9 +79,11 @@ over time, we've determined interesting combinations of graphs that give insight
 
 ![Failure Rates of Cloud Services](./images/quantified-site/failure-rates.png)
 
-We've connected Nagios to StatsD, so that we can raise alarms if key-graphs fall into anomalous states. We know, for instance, that attachments-uploaded-per-hour should not fall below the low thousands, unless we're having an issue.
+We've connected Nagios to StatsD, so that we can raise alarms if key-graphs fall into anomalous states. We know, for instance, that attachments-uploaded-per-hour should not fall below the low thousands, unless we're having problems.
 
 ![Graphite in Nagios](./images/quantified-site/graphite-nagios.png)
+
+StatsD/Graphite is an invaluable tool for detecting bugs in production. On several occasions that we've released a major production bug, and immediately detected it due to a graph spiking or zeroing out.
 
 Our Metrics Board
 -----------------
