@@ -88,6 +88,12 @@ StatsD/Graphite is an invaluable tool for detecting bugs in production. On a few
 Our Metrics Dashboard
 ---------------------
 
-Part of our transition to being a metrics driven development team, has been making sure we communicate our key metrics to everyone.
+As part of our transition towards being a metrics-driven-development-team, we wanted to ensure that our key metrics were well communicated.
+
+In the center of our office, we have a television that displays our _Ops Dashboard_. The Dashboard:
+
+* warns us if error rates are on the rise.
+* communicates to the rest of the company, if we're currently firefighting an operational meltdown.
+* and keeps us focused of the current state of develpoment: do we have too many open pull-requests, are the builds broken.
 
 ![Ops Dashboard](./images/quantified-site/dashboard.png)
