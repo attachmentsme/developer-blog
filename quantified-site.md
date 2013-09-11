@@ -98,6 +98,8 @@ In the center of our office, we now have a television that displays our _Ops Das
 
 ![Ops Dashboard](./images/quantified-site/dashboard.png)
 
+We use a service called [geckoboard](http://www.geckoboard.com/) for our metrics dashboard.
+
 Final Thoughts
 -------------
 
