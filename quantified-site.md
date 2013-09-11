@@ -25,7 +25,7 @@ This is a story about how we used technologies, such as Nagios, Graphite, StatsD
 Nagios
 ------
 
-Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnornamly; ensuring that my phone rings at 3:00AM if there's a major ops-problem.
+Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnornamly; ensuring that someone's phone rings at 3:00AM if there's a major ops-problem.
 
 Nagios ships with plugins for monitoring various services: _check\_http_, _check\_disk_, _check\_ssh_, etc. Where it really shines, is that it's so easy to extend with your own plugins. We've written plugins for:
 
@@ -35,13 +35,13 @@ Nagios ships with plugins for monitoring various services: _check\_http_, _check
 * monitoring the number of messages in our SQS queues.
 * monitoring important metrics in Graphite (more on this later.)
 
-When you release a major bug into produciton, it's useful to have a retrospective. What were the breakdowns in process that allowed for the mistake? Similarly, if we have an operational issue that Nagios fails to notify us of, we attempt to get a check in Nagios going forward.
+When you release a major bug into production, it's useful to have a retrospective. What were the breakdowns in process that allowed for the mistake? Similarly, if we have an operational issue and Nagios fails to notify us, we put a check in Nagios going forward.
 
 Here's what we currently have Nagios monitoring:
 
 ![Nagios at Attachments.me](./images/quantified-site/nagios.png)
 
-Nagios does a great job of notifying us when a major piece of infrastructe is exploding. It doesn't, however, help us isolate what might be causing the problem. Nor does it tell us when a peice of infrastructure is running, but running in an unexpected manner, e.g., when we've released a buggy version of the website. Sentry, and Graphite, are better suited for these tasks.
+Nagios does a great job of notifying us when a major piece of infrastructe is exploding. It doesn't, however, help us isolate what might be causing the problem. Nor does it tell us when a peice of infrastructure is running abnormally, e.g., when we've released a buggy version of the website. Sentry, and StatsD/Graphite, are better suited for these tasks.
 
 Sentry
 ------
@@ -52,18 +52,27 @@ In production, our unhandled exceptions bubble up to [GetSentry](https://getsent
 * notifies us of newly observed exceptions, as well as regressions.
 * and gives us aggregate analytics of exceptions over time.
 
-When releasing Attachments.me, we tend to have a tab open to Sentry's realtime incoming view. If we see a bunch of brand new exceptions flowing in, it's a good indicator that we've released a bug.
+When releasing Attachments.me, we have a browser-tab open to Sentry's realtime incoming view. If we see a bunch of brand new exceptions flowing in, it's a good indicator that we've released a bug:
 
 ![Nagios at Attachments.me](./images/quantified-site/incoming.png)
 
-Sentry's aggregate metrics can be a good canary-in-the-coal-mine for major issues. For instance, when a cloud storage service recently made an unannounced change to their API, it resulted in a huge spike in Sentry exceptions.
+Sentry's aggregate metrics can be a good canary-in-the-coal-mine for major issues. For instance, when a cloud storage service recently made an unannounced change to their API, it resulted in a huge spike in Sentry exceptions:
 
 ![Nagios at Attachments.me](./images/quantified-site/sentry.png)
 
 StatsD/Graphite
 ---------------
 
-StatsD is a service that aggregates together statistical-events emitted from your application. It can then output these events to Graphite, a tool for visualizing and manipulating graphs.
+StatsD is a daemon that aggregates together statistical-events emitted from your applications. It can, in turn, output this data to Graphite, a tool for visualizing and manipulating graphs.
+
+Attachments.me performs a lot of operations asynchronously: uploading files to the cloud, thumbnailing images and documents, emailing users. We've developed a convention where, any jobs that are dispatched to a queue, are tracked with StatsD:
+
+* an event is emitted when the job is enqueued.
+* an event is emitted when the job is pulled off the queue for processing.
+* an event is emitted if a job is completed successfully.
+* an event is emitted if an exception occurs while processing a job, and it must be retried.
+* an event is emitted if a job reaches its maximum retry attempts, and fails.
+
 
 Our Metrics Board
 -----------------
