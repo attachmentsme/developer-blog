@@ -88,12 +88,22 @@ StatsD/Graphite is an invaluable tool for detecting bugs in production. On a few
 Our Metrics Dashboard
 ---------------------
 
-As part of our transition towards being a metrics-driven-development-team, we wanted to ensure that our key metrics were well communicated.
+As part of our transition towards being a metrics-driven-development-team, we wanted to make sure that key-metrics were always on our mind.
 
-In the center of our office, we have a television that displays our _Ops Dashboard_. The Dashboard:
+In the center of our office, we now have a television that displays our _Ops Dashboard_:
 
-* warns us if error rates are on the rise.
+* it warns us if error rates are on the rise.
 * communicates to the rest of the company, if we're currently firefighting an operational meltdown.
-* and keeps us focused of the current state of develpoment: do we have too many open pull-requests, are the builds broken.
+* and keeps us appraised of the current state of development: do we have too many open pull-requests, are the builds broken?
 
 ![Ops Dashboard](./images/quantified-site/dashboard.png)
+
+Conclusion
+----------
+
+The visiblity we've gained through Nagios, Sentry, and StatsD/Graphite is incredible. 
+
+* we can submit a fix for a bug, and watch a graph of failure rates drop in response.
+* we can break something in production, and with Sentry and Graphite detect the problem, and get it fixed, before a single customer notices.
+
+Getting the point we're at today was an organic process, perhaps an important learning experience for a development team to go through. Having said that, I know that I would get similar infrastructure in place much faster in the future.
