@@ -65,19 +65,23 @@ StatsD/Graphite
 
 StatsD is a daemon that aggregates together statistical-events emitted from your applications. It can, in turn, output this data to Graphite, a tool for visualizing and manipulating graphs.
 
-Attachments.me performs many of operations asynchronously: uploading files to the cloud, thumbnailing images and documents, indexing email. We've developed a convention where, any jobs that we dispatch to a queue, are tracked with StatsD:
+Attachments.me performs many of operations asynchronously: uploading files to the cloud, thumbnailing images and documents, indexing email. We've developed a convention where any jobs that we dispatch to a queue, are tracked with StatsD:
 
 * an event is emitted when the job is enqueued.
 * an event is emitted when the job is pulled off the queue for processing.
-* an event is emitted if a job is completed successfully.
+* an event is emitted if a job has completed successfully.
 * an event is emitted if an exception occurs while processing a job, and it must be retried.
 * an event is emitted if a job reaches its maximum retry attempts, and fails.
 
-Tracking these checkpoints gives us a lot of power to detect anomalies in our system. For instance, if we're enqueuing thousands of Google Drive uploads, but zero are reaching completion, we've got a problem on our hands.
+Emitting StatsD events at these checkpoints, gives us a lot of power to detect anomalies in our system. For instance, if we're enqueuing thousands of Google Drive uploads, but zero are reaching completion, we've got a problem on our hands.
 
 over time, we've determined interesting combinations of graphs that give insight into our system. As an example, here's a dashboard describing the failure rates of different cloud-storage-services:
 
 ![Failure Rates of Cloud Services](./images/quantified-site/failure-rates.png)
+
+We've connected Nagios to StatsD, so that we can raise alarms if key-graphs fall into anomalous states. We know, for instance, that attachments-uploaded-per-hour should not fall below the low thousands, unless we're having an issue.
+
+![Graphite in Nagios](./images/quantified-site/graphite-nagios.png)
 
 Our Metrics Board
 -----------------
