@@ -56,15 +56,16 @@ In production, our unhandled exceptions bubble up to [GetSentry](https://getsent
 
 When releasing Attachments.me, we tend to have a tab open to Sentry's realtime incoming view. If we see a bunch of brand new exceptions flowing in, it's a good indicator that we've released a bug.
 
-Sentry's aggregate metrics can be a good canary-in-the-coal-mine for major issues. For instance, when a cloud storage service recently made a minor unannounced change to their API, it resulted in a huge spike in Sentry exceptions.
+![Nagios at Attachments.me](./images/quantified-site/incoming.png)
+
+Sentry's aggregate metrics can be a good canary-in-the-coal-mine for major issues. For instance, when a cloud storage service recently made an unannounced change to their API, it resulted in a huge spike in Sentry exceptions.
 
 ![Nagios at Attachments.me](./images/quantified-site/sentry.png)
 
-Graphite/StatsD
+StatsD/Graphite
 ---------------
 
-* detailed information about the system, isolate real problems.
-* intgegrated with Nagios (this has saved us more than once).
+StatsD is a service that aggregates together statistical-events emitted from your application. It can then output these events to Graphite, a tool for visualizing and manipulating graphs.
 
 Our Metrics Board
 -----------------
