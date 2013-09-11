@@ -1,4 +1,4 @@
-The Quantified Site: how metrics embiggen development at Attachments.me
+The Quantified Site: how metrics drive the development process at Attachments.me
 ====================================
 
 Attachments.me has many dependencies:
