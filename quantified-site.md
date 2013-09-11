@@ -65,7 +65,7 @@ StatsD/Graphite
 
 StatsD is a daemon that aggregates together statistical-events emitted from your applications. It can, in turn, output this data to Graphite, a tool for visualizing and manipulating graphs.
 
-Attachments.me performs many of operations asynchronously: uploading files to the cloud, thumbnailing images and documents, indexing email. All jobs that we dispatch to a queue are tracked with StatsD:
+Attachments.me performs many operations asynchronously: uploading files to the cloud, thumbnailing images and documents, indexing email. All jobs that we dispatch to a queue are tracked with StatsD:
 
 * an event is emitted when the job is enqueued.
 * an event is emitted when the job is pulled off the queue for processing.
@@ -108,7 +108,7 @@ The visibility we've gained through Nagios, Sentry, and StatsD/Graphite is incre
 
 Getting the point we're at today was an organic process, and an important learning experience for the development team. Having said that, I highly endorse moving towards a similar infrastructure -- it's really quite awesome.
 
-Please tweet at me, or open an issue, if you have any feedback for this post :thumbsup:
+Please tweet at me, email me, or open an issue, if you have any feedback or questions :thumbsup:
 
 -----------------
 _Benjamin Coe_ is the co-founder of [Attachments.me](https://attachments.me), he can often be found [tweeting](https://twitter.com/#/benjamincoe) and [coding](https://github.com/bcoe).
