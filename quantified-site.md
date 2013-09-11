@@ -1,5 +1,5 @@
-The Quantified Site
-===================
+The Quantified Site: how metrics embiggen development at Attachments.me
+====================================
 
 Attachments.me has many dependencies:
 
@@ -25,7 +25,7 @@ This is a story about how we used technologies, such as Nagios, Graphite, StatsD
 Nagios
 ------
 
-Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnornamly; ensuring that someone's phone rings at 3:00AM if there's a major ops-problem.
+Nagios monitors key components of our infrastructure, and sends alerts if they're behaving abnormally; ensuring that someone's phone rings at 3:00AM if there's a major ops-problem.
 
 Nagios ships with plugins for monitoring various services: _check\_http_, _check\_disk_, _check\_ssh_, etc. Where it really shines, is that it's so easy to extend with your own plugins. We've written plugins for:
 
@@ -41,7 +41,7 @@ Here's what we currently have Nagios monitoring:
 
 ![Nagios at Attachments.me](./images/quantified-site/nagios.png)
 
-Nagios does a great job of notifying us when a major piece of infrastructe is exploding. It doesn't, however, help us isolate what might be causing the problem. Nor does it tell us when a peice of infrastructure is running abnormally, e.g., when we've released a buggy version of the website. Sentry, and StatsD/Graphite, are better suited for these tasks.
+Nagios does a great job of notifying us when a major piece of infrastructure is exploding. It doesn't, however, help us isolate what might be causing the problem. Nor does it tell us when a piece of infrastructure is simply running abnormally, e.g., when we've released a buggy version of the website. Sentry, and StatsD/Graphite, are better suited for these tasks.
 
 Sentry
 ------
@@ -83,7 +83,7 @@ We've connected Nagios to StatsD, so that we can raise alarms if key-graphs fall
 
 ![Graphite in Nagios](./images/quantified-site/graphite-nagios.png)
 
-StatsD/Graphite is an invaluable tool for detecting bugs in production. On a few occasions, we've released a major production bug and immediately detected it based on a graph spiking or zeroing out.
+StatsD/Graphite is an invaluable tool for detecting bugs in production. On a few occasions, we've released a major production issue and immediately detected it based on a graph spiking or zeroing-out.
 
 Our Metrics Dashboard
 ---------------------
@@ -98,12 +98,17 @@ In the center of our office, we now have a television that displays our _Ops Das
 
 ![Ops Dashboard](./images/quantified-site/dashboard.png)
 
-Conclusion
-----------
+Final Thoughts
+-------------
 
-The visiblity we've gained through Nagios, Sentry, and StatsD/Graphite is incredible. 
+The visibility we've gained through Nagios, Sentry, and StatsD/Graphite is incredible. 
 
 * we can submit a fix for a bug, and watch a graph of failure rates drop in response.
 * we can break something in production, and with Sentry and Graphite detect the problem, and get it fixed, before a single customer notices.
 
-Getting the point we're at today was an organic process, and an important learning experience for a development team. Having said that, I highly endorse getting similar infrastructre in place -- it's really quite awesome.
+Getting the point we're at today was an organic process, and an important learning experience for the development team. Having said that, I highly endorse moving towards a similar infrastructure -- it's really quite awesome.
+
+Please tweet at me, or open an issue, if you have any feedback for this post :thumbsup:
+
+-----------------
+_Benjamin Coe_ is the co-founder of [Attachments.me](https://attachments.me), he can often be found [tweeting](https://twitter.com/#/benjamincoe) and [coding](https://github.com/bcoe).
