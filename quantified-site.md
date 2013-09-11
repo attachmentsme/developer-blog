@@ -83,17 +83,11 @@ We've connected Nagios to StatsD, so that we can raise alarms if key-graphs fall
 
 ![Graphite in Nagios](./images/quantified-site/graphite-nagios.png)
 
-StatsD/Graphite is an invaluable tool for detecting bugs in production. On several occasions that we've released a major production bug, and immediately detected it due to a graph spiking or zeroing out.
+StatsD/Graphite is an invaluable tool for detecting bugs in production. On a few occasions, we've released a major production bug and immediately detected it based on a graph spiking or zeroing out.
 
-Our Metrics Board
------------------
+Our Metrics Dashboard
+---------------------
 
-* make sure people understand the metrics that are important to ops.
-* put them in a central place, let people know when problems are happening.
+Part of our transition to being a metrics driven development team, has been making sure we communicate our key metrics to everyone.
 
-Conclusion 
-----------
-
-* these tools compliment each other.
-* a quantified site has made our lives far better.
-* I would get this infrastructure in place out-of-the-gate in the future.
+![Ops Dashboard](./images/quantified-site/dashboard.png)
