@@ -1,4 +1,4 @@
-The Quantified Site: How Metrics Drive Ops/Development at Attachments.me
+The Quantified Site: How Metrics Drive DevOps at Attachments.me
 ====================================
 
 Attachments.me has many dependencies:
